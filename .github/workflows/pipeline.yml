@@ -7,12 +7,6 @@ on:
       # note that your "main" branch might be called main instead of master
 
 jobs:
-  main:
-    name: Deploy to Render
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger deployment
-        run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
     steps:
@@ -26,3 +20,9 @@ jobs:
         run: npm run eslint
       - name: Build
         run: npm run build
+  main:
+    name: Deploy to Render
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger deployment
+        run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
